@@ -1,0 +1,147 @@
+@layer demo {
+	@layer base {
+		.cards, .cards * {
+			box-sizing: border-box;
+			padding: 0;
+			margin: 0;
+		}
+
+		:root {
+			--cover-size: 15rem;
+		}
+
+		@media (max-width: 1024px) {
+			:root {
+				--cover-size: 9rem;
+			}
+		}
+
+		@media (max-width: 600px) {
+			:root {
+				--cover-size: 6rem;
+			}
+		}
+
+		html, body {
+			height: 100%;
+			width: 100%;
+			margin: 0;
+			padding: 0;
+		}
+
+		body {
+			background: #111;
+			font-family: sans-serif;
+
+			display: flex;
+			flex-direction: column;
+			gap: 1em;
+			padding: 1em;
+			place-content: safe center;
+			overscroll-behavior: contain;
+			box-sizing: border-box;
+		}
+
+		.cards {
+			list-style: none;
+			overflow-x: scroll;
+			width: 100%;
+			white-space: nowrap;
+
+			outline: 1px solid #333;
+			background: rgba(0 0 0 / 0.5);
+		}
+
+		@layer scroll-snapping {
+			/*                                             */
+			#controls:has(#scroll-snapping:checked) ~ .cards:not(.active) {
+				scroll-snap-type: x mandatory;
+			}
+			#controls:has(#scroll-snapping:checked) ~ .cards li {
+				scroll-snap-align: center;
+			}
+		}
+
+		.cards li {
+			display: inline-block;
+			width: var(--cover-size);
+			height: var(--cover-size);
+		}
+
+		.cards li img {
+			display: block;
+			width: var(--cover-size);
+			height: var(--cover-size);
+
+			-webkit-box-reflect: below 0.5em
+				linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.25));
+		}
+
+		.cards {
+			--size: 6;
+			min-height: calc(var(--cover-size) * 2.5);
+
+			width: calc(var(--cover-size) * var(--size));
+			margin: 0 auto;
+			padding: calc(var(--cover-size) / 3 * 2) 0;
+			position: relative;
+			max-width: 90vw;
+		}
+
+		/*                                                                                                         */
+		/*                                                                    */
+		.cards li:first-of-type {
+			margin-left: calc(50% - (var(--cover-size) / 2));
+		}
+		.cards li:last-of-type {
+			margin-right: calc(50% - (var(--cover-size) / 2));
+		}
+	}
+
+	@layer components {
+		@layer warning {
+			.warning {
+				--size: 6;
+				width: calc(var(--cover-size) * var(--size));
+				margin: 0 auto !important;
+				max-width: 90vw;
+			}
+		}
+
+		@layer debug {
+			#controls {
+				position: absolute;
+				top: 1em;
+				left: 1em;
+			}
+
+			#controls label {
+				display: block;
+				color: white;
+			}
+
+			#controls:has(#debug:checked) ~ .cards {
+				border: 1px solid lime;
+			}
+
+			#controls:has(#debug:checked) ~ .cards li {
+				text-align: center;
+				color: white;
+				border: 1px solid blue;
+			}
+
+			#controls:has(#debug:checked) ~ .cards li::before {
+				content: attr(id);
+				display: block;
+				position: absolute;
+				inset: 0;
+				line-height: var(--cover-size);
+				opacity: 0.5;
+			}
+
+			#controls:has(#debug:checked) ~ .cards li img {
+				opacity: 0.5;
+			}
+		}
+	}
+}

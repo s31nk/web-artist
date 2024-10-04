@@ -1,0 +1,174 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    @font-face {
+    font-family: "Geomanist", sans-serif;
+    src: url(./fonts/Geomanist-Regular.ttf);
+    }
+    
+}
+
+.login {
+    font-family: "Geomanist", sans-serif;
+    margin: 0;
+    padding: 0;
+    background: rgb(0, 0, 0, 0.9);   
+}
+
+.formulario {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 500px;
+    background: rgba(76, 76, 76, 0.725);
+    border-radius: 10px;
+}
+
+.formulario h1 {
+    font-size: 30px;
+    color: #fff;
+    text-align: center;
+    padding: 30px 0 30px 0;
+    border-bottom: 1px solid silver;
+}
+
+.formulario form {
+    padding: 0 40px;
+    box-sizing: border-box;
+}
+
+form .username {
+    position: relative;
+    border-bottom: 2px solid #adadad;
+    margin: 30px 0;
+}
+.username input {
+    width: 100%;
+    padding: 0 5px;
+    height: 40px;
+    font-size: 16px;
+    border: none;
+    background: none;
+    outline: none;
+}
+
+.username label {
+    position: absolute; 
+    top: 50%;
+    left: 5px;  
+    color: #adadad;
+    transform: translateY(-50%);
+    font-size: 16px;    
+    pointer-events: none;  
+    transition: .5s;  
+}
+
+.username span::before {
+    content: '';
+    position: absolute;
+    top: 40px;
+    left: 0;
+    width: 0%;  
+    height: 2px;
+    background: #6c3483;
+    transition: .5s;
+
+}
+
+.username input:focus ~ label,
+.username input:valid ~ label {
+    top: -5px;
+    color: #ffffffdc;
+}
+
+.username input:focus ~ span::before, 
+.username input:valid ~ span::before {
+    width: 100%;
+}
+
+form .mail {
+    position: relative;
+    border-bottom: 2px solid #adadad;
+    margin: 30px 0;
+}
+.mail input{
+    width: 100%;
+    padding: 0 5px;
+    height: 40px;
+    font-size: 16px;
+    border: none;
+    background: none;
+    outline: none;
+}
+
+.mail label {
+    position: absolute; 
+    top: 50%;
+    left: 5px;  
+    color: #a1a1a1;
+    transform: translateY(-50%);
+    font-size: 16px;    
+    pointer-events: none;  
+    transition: .5s;  
+}
+
+.mail span::before {
+    content: '';
+    position: absolute;
+    top: 40px;
+    left: 0;
+    width: 0%;  
+    height: 2px;
+    background: #6c3483;
+    transition: .5s;
+
+}
+
+.mail input:focus ~ label,
+.mail input:valid ~ label {
+    top: -5px;
+    color: #f8f9f8dc;
+}
+
+.mail input:focus ~ span::before, 
+.mail input:valid ~ span::before {
+    width: 100%;
+}
+
+/*a partir de aqui mensaje*/
+
+.message {  
+
+    padding: 10px 2%;
+    font-family: "Geomanist", sans-serif;
+    font-size: 15px;
+    background: rgba(29, 29, 29, 0.5);
+    color: #fff;
+    border-radius: 5px;
+}
+
+.message:focus {
+    outline: none;
+}
+
+.boton {
+    
+    display: flex;                                                         
+    width: 50%; 
+    height: 50px;
+    background: #2c2c2c;
+    border-radius: 25px;
+    font-size: 18px;
+    color: #e9f4fb;
+    font-weight: 700;
+    cursor: pointer;
+    outline: none;
+    border-color: #2c2c2c;
+}
+
+.boton:hover {
+    border-color: #d7d7d7;
+    transition: .5s;
+}
